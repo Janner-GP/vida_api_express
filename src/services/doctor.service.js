@@ -15,11 +15,23 @@ export const createDoctor = async ({ name, specialty }) => {
 
 }
 
+export const deleteDoctor = async (id) => {
+
+    const query = 'DELETE FROM test.doctor WHERE id = $1 RETURNING id';
+    const values = [id]
+
+    try {
+        const response = await pool.query(query, values);
+        return response;
+    } catch (error) {
+        console.error('Error al eliminar un doctor')
+        throw error;
+    }
+}
+
 export const getAllDoctors = async () => {
 
-    const query = `select p.name as nombre_paciente, p.*, d.* from test.doctor d
-                   inner join test.appointment a on a.doctor_id =  d.id
-                   inner join test.patient p on a.patient_id = p.id`;
+    const query = `select d.* from test.doctor d`;
 
     try {
         const response = await pool.query(query);
