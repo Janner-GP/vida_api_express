@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { triage } from "../controllers/appoinment.controller.js";
+import { create } from "../controllers/appoinment.controller.js";
 
 export const appointmentRoutes = Router();
 
-appointmentRoutes.post('/triage', triage)
+appointmentRoutes.post('/', create)

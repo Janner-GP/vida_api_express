@@ -1,4 +1,4 @@
-import { createSpecialty, deleteSpeciality, getAllSpecialitys } from "../services/specialty.service.js";
+import { createSpecialty, deleteSpeciality, getAllSpecialitys, recoverySpecialty } from "../services/specialty.service.js";
 
 export const create = async (req, res) => {
 
@@ -27,8 +27,8 @@ export const deleteById = async (req, res) => {
         res.status(200).json({response: "Especialidad eliminado correctamente"});
 
     } catch (error) {
-        console.error('Error al eliminar la especialidad:', error);
-        res.status(500).json({ error: error.message });
+        console.log(error)
+        res.status(error.statusCode).json({ error: error.message });
     }
 
 }
@@ -49,3 +49,15 @@ export const getAll = async (req, res) => {
     }
 
 };
+
+export const recovery = async (req, res) => {
+
+    try {
+        const specialty = await recoverySpecialty(req.body.name)
+        res.status(201).json({response: specialty})
+    } catch (error) {
+        console.error("Error al recuperar la especialidad: " + error)
+        res.status(error.statusCode).json({response: error.message})
+    }
+
+}

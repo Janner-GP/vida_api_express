@@ -1,4 +1,4 @@
-import { pool } from "../config/dbconfig.js";
+import { pool } from "../config/database/pgconfig.js";
 
 export const createDoctor = async ({ name, specialty }) => {
 

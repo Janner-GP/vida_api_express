@@ -9,5 +9,8 @@ export const env = {
     PASSWORD: process.env.DB_PWD,
     NAME: process.env.DB_NAME
   },
+  MONGO: {
+    URI: process.env.MONGO_URI_DB
+  },
   OPENAI_API_KEY: process.env.OPENAI_API_KEY
 };
