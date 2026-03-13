@@ -12,10 +12,10 @@ await connectPostgres()
 const app = express();
 app.use(express.json());
 
-app.use('/doctors', doctorRoutes);
-app.use('/appointments', appointmentRoutes);
-app.use('/specialty', specialtyRoutes);
-app.use('/patients', patientRoutes);
+app.use('/api/doctors', doctorRoutes);
+app.use('/api/appointments', appointmentRoutes);
+app.use('/api/specialty', specialtyRoutes);
+app.use('/api/patients', patientRoutes);
 
 
 export default app;
